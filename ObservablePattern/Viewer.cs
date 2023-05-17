@@ -9,8 +9,8 @@ namespace ObservablePattern
 {
     public class Viewer : IObserver
     {
-        private Match match { get; set; }
-        public Viewer(Match match)
+        private IMatch match { get; set; }
+        public Viewer(IMatch match)
         {
             this.match = match;
         }

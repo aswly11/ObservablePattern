@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ObservablePattern
 {
-    public interface IMatch
+    public interface IViewer
     {
-        void SetScore(int score);
-        int GetScore();
+        void Update();
+
     }
 }
