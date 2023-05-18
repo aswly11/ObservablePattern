@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace ObservablePattern
 {
-    public interface IObservable
+    public interface IObservable<T>
     {
-        void Add(IObserver Observer);
-        void Remove(IObserver Observer);
+        void Add(IObserver<T> Observer);
+        void Remove(IObserver<T> Observer);
         void Notify();
+        void SetValue(T Value);
+        T GetValue();
 
     }
 }

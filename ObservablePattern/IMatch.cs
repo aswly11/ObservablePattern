@@ -8,6 +8,7 @@ namespace ObservablePattern
 {
     public interface IMatch
     {
+        void Subscribe(IObserver<int> t);
         void SetScore(int score);
         int GetScore();
     }

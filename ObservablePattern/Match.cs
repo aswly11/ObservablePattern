@@ -6,37 +6,29 @@ using System.Threading.Tasks;
 
 namespace ObservablePattern
 {
-    public class Match : IMatch, IObservable
+    public class Match : IMatch
     {
-        public ICollection<IObserver> Observers { get; set; } = new List<IObserver>();
-        private int Score { get; set; }
-        public void Add(IObserver Observer)
+        private IObservable<int> Score { get; set; }
+        public Match(IObservable<int> Score)
         {
-            Observers.Add(Observer);
+            this.Score = Score;
         }
 
         public int GetScore()
         {
-            return Score;
+            return Score.GetValue();
         }
 
-        public void Notify()
-        {
-            foreach (var item in Observers)
-            {
-                item.Update();
-            }
-        }
-
-        public void Remove(IObserver Observer)
-        {
-            Observers.Remove(Observer);
-        }
 
         public void SetScore(int score)
         {
-            Score = score;
-            Notify();
+            Score.SetValue(score);
+            Score.Notify();
+        }
+
+        public void Subscribe(IObserver<int> observer)
+        {
+            this.Score.Add(observer);
         }
     }
 }

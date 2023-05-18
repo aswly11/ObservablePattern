@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ObservablePattern
 {
-    public class Viewer : IObserver
+    public class Viewer : IObserver<int>
     {
         private IMatch match { get; set; }
         public Viewer(IMatch match)
